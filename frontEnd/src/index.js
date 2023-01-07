@@ -24,3 +24,4 @@ window.addEventListener('hashchange', router)
 
 //is routes an object ??
 //what is axios/ajex ??
+//eslint //how to disable lf/crlf error??
