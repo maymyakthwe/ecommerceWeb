@@ -18,6 +18,7 @@ const router = async () => {
         (request.id ? '/:id' : '') +
         (request.verb ? `/${request.verb}` : '');
     const screen = routes[parseUrl] ? routes[parseUrl] : error404Screen;
+
     const main = document.getElementById('main-container');
     main.innerHTML = await screen.render();
     await screen.after_render();
