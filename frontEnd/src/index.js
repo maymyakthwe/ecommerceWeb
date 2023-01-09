@@ -4,6 +4,7 @@ import { parseRequestUrl } from "./utils.js";
 import error404Screen from "./screens/error404Screen.js";
 import cartScreen from "./screens/cartScreen.js";
 import signInScreen from './screens/signInScreen'
+import Header from "./component/headers.js";
 
 const routes = {
     "/": homeScreen,
@@ -20,6 +21,9 @@ const router = async () => {
         (request.id ? '/:id' : '') +
         (request.verb ? `/${request.verb}` : '');
     const screen = routes[parseUrl] ? routes[parseUrl] : error404Screen;
+    const header = document.getElementById('header-container');
+    header.innerHTML = await Header.render();
+    await Header.after_render();
 
     const main = document.getElementById('main-container');
     main.innerHTML = await screen.render();

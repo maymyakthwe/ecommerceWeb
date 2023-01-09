@@ -1,7 +1,29 @@
+/* eslint-disable no-alert */
+import { signin } from "../api";
+import { getUserInfo, setUserInfo } from "../localStorage";
+
 const signInScreen = {
-    after_render: () => { },
-    render: () => {
-        return `
+  after_render: () => {
+    document.getElementById("signin-form")
+      .addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = await signin({
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+        });
+        if (data.error) {
+          alert(data.error);
+        } else {
+          setUserInfo(data);
+          document.location.hash = '/';
+        }
+      });
+  },
+  render: () => {
+    if (getUserInfo().name) {
+      document.location.hash = '/';
+    }
+    return `
         <div class="form-container">
       <form id="signin-form">
         <ul class="form-items">
@@ -29,7 +51,7 @@ const signInScreen = {
       </form>
     </div>
     `
-    }
+  }
 };
 
 export default signInScreen;
