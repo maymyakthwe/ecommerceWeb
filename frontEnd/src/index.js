@@ -7,6 +7,8 @@ import signInScreen from './screens/signInScreen'
 import Header from "./component/headers.js";
 import registerScreen from "./screens/registerScreen.js";
 import profileScreen from "./screens/profileScreen.js";
+import shippingScreen from "./screens/shippingScreen.js";
+import paymentScreen from "./screens/paymentScreen.js";
 
 const routes = {
     "/": homeScreen,
@@ -16,6 +18,8 @@ const routes = {
     '/signin': signInScreen,
     '/register': registerScreen,
     '/profile': profileScreen,
+    '/shipping': shippingScreen,
+    '/payment': paymentScreen,
 };
 
 const router = async () => {
